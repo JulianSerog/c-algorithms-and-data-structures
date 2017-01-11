@@ -17,18 +17,14 @@ private:
 class Sll {
 private:
 	Node *start = NULL;
-	int size;
 public:
 	//constructor
 	Sll() {
 		//nothing happens
 		cout << "created an empty sll" << endl;
-		size = 0;
 	}
 	//insert method
 	void insert(int data) {
-		cout << "INSERTING " << data << " INTO NEW NODE\n" << endl;
-		size++;
 		if (start == NULL) { 
 			start = new Node(data); 
 		} else {
@@ -41,15 +37,57 @@ public:
 		}//else
 	}//insert
 
-	//print method
+	/**
+	*
+	* removes element at index
+	*/
+	void remove(int index) {
+		Node* n = this->start;
+		for (int i = 0; i < index; ++i){
+			if (i+1 == index && n != NULL) {
+				Node* temp = n->next->next;
+				n->next = n->next->next;
+				free(temp);
+			}
+			n = n->next;
+		}//for
+	}//remove
+
+	/**
+	*
+	* prints list
+	*/
 	void print() {
 		Node *c = start;
-		while(c != NULL) {
-			cout << c->data << " ";
-			c = c->next;
-		}//while
-		cout << endl;
+		if (!c){
+			cout << "list is empty" << endl;
+		} else {
+			while(c != NULL) {
+				cout << c->data;
+				if (c->next == NULL) cout << endl;
+				else cout << " -> ";
+				c = c->next;
+			}//while
+		}//else
 	}//print
+
+	/**
+	*
+	* returns size of list
+	*/
+	int size() {
+		int counter = 0;
+		if (!start) {
+			return counter;
+		} else {
+			Node* c = start;
+			while(c) {
+				counter++;
+				c = c->next;
+			}//while
+			return counter;
+		}//else
+	}//size
 };//SLL
 
 
@@ -61,8 +99,17 @@ int main() {
 	sll.insert(3);
 	sll.insert(5);
 	sll.insert(9);
-	cout << "printed list: " << endl;
+	sll.remove(2);
+	cout << "printed sll: ";
 	sll.print();
+	//create an empty list
+	cout << "empty list: ";
+	Sll empty = Sll();
+	empty.print();
+
+	cout << "empty size: " << empty.size() << ", sll1 size: " << sll.size() << endl;
+
+	
 
 	return 0;
 }
