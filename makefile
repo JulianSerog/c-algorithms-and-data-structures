@@ -6,7 +6,6 @@ compile: sll.cpp pointers.cpp dll.cpp Bst.cpp
 	g++ -o executables/dll dll.cpp
 	g++ -o executables/bst Bst.cpp
 run: executables/pointers executables/sll executables/dll executables/bst
-	echo SLL TESTS:
 	./executables/pointers
 	./executables/sll
 	./executables/dll
