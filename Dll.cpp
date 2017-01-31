@@ -97,5 +97,7 @@ int main() {
 	dll.print();
 	cout << "size of list: " << dll.size() << endl;
 	cout << "list empty? " << dll.isEmpty() << endl;
+	//create new line for make run
+	cout << endl;
 	return 0;
 }

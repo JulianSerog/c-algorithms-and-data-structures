@@ -92,7 +92,6 @@ public:
 
 
 int main() {
-	cout << "main function beginning...\n" << endl;
 	//begin function
 	Sll sll = Sll();
 	sll.insert(1);
@@ -108,7 +107,8 @@ int main() {
 	empty.print();
 
 	cout << "empty size: " << empty.size() << ", sll1 size: " << sll.size() << endl;
-
+	//end line for make run
+	cout << endl;
 	
 
 	return 0;

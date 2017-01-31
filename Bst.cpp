@@ -12,6 +12,7 @@ Bst::Bst(int data) {
 	this->root = new Node(data);
 }
 
+//does not take in root for parameter b/c user should not have to enter the root every time this method is called
 void Bst::insert(int data) {
 	if (root) {
 		insertHelper(this->root, data);
@@ -37,8 +38,26 @@ void Bst::insertHelper(Node* r, int data) {
 	}//else if
 }//insert
 
-void Bst::remove(Node* r, int data) {
+//does not take in root for parameter b/c user should not have to enter the root every time this method is called
+void Bst::remove(int data) {
+	this->removeHelper(this->root, data);
+}
 
+void Bst::removeHelper(Node *r, int data) {
+	if (r->data == data) {
+		//cout << "removing node: " << r->data << endl;
+		if (r->isLeafNode()) {
+			cout << "deleting node with value: " << r->data << " that has no children nodes" << endl;
+
+			delete r;
+		}
+		//TODO: implement other cases
+	} else if(data > r->data) {
+		//traverse right
+		removeHelper(r->right, data);
+	} else {
+		removeHelper(r->left, data);
+	}
 }
 
 void Bst::preOrder() {
@@ -101,6 +120,9 @@ int main(int argc, char const *argv[]) {
 	a.insert(39);
 	a.insert(5);
 
+	a.postOrder();
+
+	a.remove(5);
 	a.postOrder();
 
 	return 0;

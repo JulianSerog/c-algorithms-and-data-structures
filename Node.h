@@ -8,6 +8,10 @@ private:
 	Node* right = NULL;
 	Node* left = NULL;
 	int data;
+	bool isLeafNode() {
+		if(!right && !left) return true;
+		else return false;
+	}
 
 public:
 	Node(int data) {
